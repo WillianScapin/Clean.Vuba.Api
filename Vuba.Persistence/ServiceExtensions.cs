@@ -17,7 +17,7 @@ namespace Vuba.Persistence
         public static void ConfigurePersistenceApp(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Environment.GetEnvironmentVariable("DefaultConnection"); //configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(opt => opt.UseNpgsql(connectionString));
             services.AddScoped<IUnitOfWork, UnitiOfWork>();
 
@@ -52,8 +52,8 @@ namespace Vuba.Persistence
 
             var awsOptions = configuration.GetAWSOptions("AWS");
             awsOptions.Credentials = new BasicAWSCredentials(
-                configuration.GetSection("AWS-AccessKey").Value, //Environment.GetEnvironmentVariable("AWS-AccessKey"),
-                configuration.GetSection("AWS-SecretKey").Value  //Environment.GetEnvironmentVariable("AWS-SecretKey")
+                Environment.GetEnvironmentVariable("AWS-AccessKey"), //configuration.GetSection("AWS-AccessKey").Value,
+                Environment.GetEnvironmentVariable("AWS-SecretKey") //configuration.GetSection("AWS-SecretKey").Value  
             );
             awsOptions.Region = Amazon.RegionEndpoint.USEast1;
             services.AddAWSService<IAmazonS3>(awsOptions);

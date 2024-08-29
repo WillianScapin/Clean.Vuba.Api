@@ -52,8 +52,8 @@ namespace Vuba.Persistence
 
             var awsOptions = configuration.GetAWSOptions("AWS");
             awsOptions.Credentials = new BasicAWSCredentials(
-                configuration.GetSection("AWS:AccessKey").Value, //Environment.GetEnvironmentVariable("AWS-AccessKey"),
-                configuration.GetSection("AWS:SecretKey").Value  //Environment.GetEnvironmentVariable("AWS-SecretKey")
+                configuration.GetSection("AWS-AccessKey").Value, //Environment.GetEnvironmentVariable("AWS-AccessKey"),
+                configuration.GetSection("AWS-SecretKey").Value  //Environment.GetEnvironmentVariable("AWS-SecretKey")
             );
             awsOptions.Region = Amazon.RegionEndpoint.USEast1;
             services.AddAWSService<IAmazonS3>(awsOptions);

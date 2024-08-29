@@ -15,8 +15,6 @@ namespace Vuba.WebAPI
 {
     public class Program
     {
-        public static string _jwtSecret = "rbs38-8343fhye-64193-ndr27utrangplecy";
-
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -170,7 +168,7 @@ namespace Vuba.WebAPI
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
                     //Defino minha cháve de criptografia
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JwtSecret").Value)),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = false,

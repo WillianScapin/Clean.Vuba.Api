@@ -1,0 +1,13 @@
+﻿using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vuba.Application.UseCases.Rating.UpdateRating
+{
+    public sealed record UpdateRatingRequest(int Id, int ContentId, string ContentType,
+                                             int UserId, int Score, DateTime Timestamp)
+                            : IRequest<UpdateRatingResponse>;
+}

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1A3DC7A9-4BB1-4577-8048-FA962143BE18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructure", "Infraestructure", "{1460B959-652E-4417-8CF3-03419F6E4062}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BF47DF71-0444-4A8E-A4A8-D2E9BF56C903}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D71A37A3-A32B-49CC-8001-FD52EC642CFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vuba.Application", "Vuba.Application\Vuba.Application.csproj", "{B1A232C7-1B38-4406-BE70-338C464211D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vuba.Domain", "Vuba.Domain\Vuba.Domain.csproj", "{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vuba.Persistence", "Vuba.Persistence\Vuba.Persistence.csproj", "{F4B3266C-20A8-41FE-BDB2-3A721385D5B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vuba.WebAPI", "Vuba.WebAPI\Vuba.WebAPI.csproj", "{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vuba.xUnitTest", "Vuba.xUnitTest\Vuba.xUnitTest.csproj", "{23D41BB9-E1BE-4128-A305-B4507E98583A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1A232C7-1B38-4406-BE70-338C464211D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A232C7-1B38-4406-BE70-338C464211D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A232C7-1B38-4406-BE70-338C464211D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A232C7-1B38-4406-BE70-338C464211D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B3266C-20A8-41FE-BDB2-3A721385D5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B3266C-20A8-41FE-BDB2-3A721385D5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B3266C-20A8-41FE-BDB2-3A721385D5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B3266C-20A8-41FE-BDB2-3A721385D5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D41BB9-E1BE-4128-A305-B4507E98583A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D41BB9-E1BE-4128-A305-B4507E98583A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D41BB9-E1BE-4128-A305-B4507E98583A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D41BB9-E1BE-4128-A305-B4507E98583A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1A232C7-1B38-4406-BE70-338C464211D2} = {1A3DC7A9-4BB1-4577-8048-FA962143BE18}
+		{C50FEE40-5A6F-40AF-90AB-41E4EEE734FE} = {1A3DC7A9-4BB1-4577-8048-FA962143BE18}
+		{F4B3266C-20A8-41FE-BDB2-3A721385D5B1} = {1460B959-652E-4417-8CF3-03419F6E4062}
+		{FB2D42EC-CB0C-4C85-B6F9-9481A5E59CC8} = {BF47DF71-0444-4A8E-A4A8-D2E9BF56C903}
+		{23D41BB9-E1BE-4128-A305-B4507E98583A} = {D71A37A3-A32B-49CC-8001-FD52EC642CFC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9B1DD87-330B-453E-B143-7E55FAC18076}
+	EndGlobalSection
+EndGlobal

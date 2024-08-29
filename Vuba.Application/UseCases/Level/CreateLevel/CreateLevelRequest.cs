@@ -1,0 +1,12 @@
+﻿using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vuba.Application.UseCases.Level.CreateLevel
+{
+    public sealed record CreateLevelRequest(string Name)
+                            :IRequest<CreateLevelResponse>;
+}

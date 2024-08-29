@@ -1,0 +1,27 @@
+version: '1.0'
+services:
+  clean_vuba-api:
+    build:
+      context: .
+      dockerfile: Vuba.WebAPI\Dockerfile
+    image: clean_vuba-api
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - postgres
+
+  postgres:
+      image: postgres:latest
+      environment:
+        POSTGRES_USER: dbuser
+        POSTGRES_PASSWORD: -mda8960
+        POSTGRES_DB: Vuba
+      ports:
+        - "5432:5432"
+      volumes:
+        - postgres-storage:/var/lib/postgresql/data
+
+volumes:
+  postgres-storage:

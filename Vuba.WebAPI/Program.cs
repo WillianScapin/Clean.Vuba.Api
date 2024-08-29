@@ -111,9 +111,9 @@ namespace Vuba.WebAPI
 
         static void CreateDatabase(WebApplication app)
         {
-            //var serviceScope = app.Services.CreateScope();
-            //var dataContext = serviceScope.ServiceProvider.GetService<AppDbContext>();
-            //dataContext?.Database.EnsureCreated();
+            var serviceScope = app.Services.CreateScope();
+            var dataContext = serviceScope.ServiceProvider.GetService<AppDbContext>();
+            dataContext?.Database.EnsureCreated();
         }
 
         static void ConfigSwagger(WebApplicationBuilder builder)
@@ -168,7 +168,7 @@ namespace Vuba.WebAPI
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
                     //Defino minha cháve de criptografia
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("_jwtSecret"))),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JwtSecret"))),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = false,

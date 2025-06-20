@@ -132,6 +132,7 @@ namespace Vuba.WebAPI
             var dataContext = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
             dataContext?.Database.EnsureCreated();
+            //dataContext?.Database.Migrate();
         }
 
         static void ConfigSwagger(WebApplicationBuilder builder)

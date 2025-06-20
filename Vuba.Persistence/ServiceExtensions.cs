@@ -17,7 +17,7 @@ namespace Vuba.Persistence
         public static void ConfigurePersistenceApp(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_"); //configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_DefaultConnection"); //configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(opt => opt.UseNpgsql(connectionString));
             services.AddScoped<IUnitOfWork, UnitiOfWork>();
 

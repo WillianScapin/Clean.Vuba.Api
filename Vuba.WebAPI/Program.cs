@@ -10,13 +10,14 @@ using Vuba.Application.Services;
 using System.Text.Json.Serialization;
 using Vuba.WebAPI.Middleware;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using static System.Net.WebRequestMethods;
 
 namespace Vuba.WebAPI
 {
     public class Program
     {
-        public static string _jwtSecret = "rbs38-8343fhye-64193-ndr27utrangplecy";
-
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -81,7 +82,7 @@ namespace Vuba.WebAPI
 
             app.UseHttpsRedirection();
 
-            // Configuração do CORS deve vir antes do roteamento e autenticação
+            // Configuraï¿½ï¿½o do CORS deve vir antes do roteamento e autenticaï¿½ï¿½o
             app.UseCors();
 
             app.UseRouting();
@@ -92,7 +93,7 @@ namespace Vuba.WebAPI
 
             app.MapControllers();
 
-            //======================= Configurações de Headers =======================//
+            //======================= Configuraï¿½ï¿½es de Headers =======================//
             ConfigureHeaders(app);
         }
 
@@ -101,17 +102,15 @@ namespace Vuba.WebAPI
         {
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self';");
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'");
                 context.Response.Headers.Add("Permissions-Policy", "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 context.Response.Headers.Add("X-Frame-Options", "DENY");
-
                 if (app.Environment.IsProduction())
                 {
                     context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
                 }
-
                 var allowedOrigins = new[] { "http://192.168.0.75:3000", "https://localhost:3000", "https://vuba.netlify.app/" };
                 var origin = context.Request.Headers["Origin"].ToString();
 
@@ -119,7 +118,7 @@ namespace Vuba.WebAPI
                 {
                     context.Response.Headers.Add("Access-Control-Allow-Origin", origin);
                 }
-                // Substitua pelo seu domínio de frontend
+              
                 context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
 
                 await next();
@@ -133,7 +132,9 @@ namespace Vuba.WebAPI
         {
             var serviceScope = app.Services.CreateScope();
             var dataContext = serviceScope.ServiceProvider.GetService<AppDbContext>();
+
             dataContext?.Database.EnsureCreated();
+            //dataContext?.Database.Migrate();
         }
 
         static void ConfigSwagger(WebApplicationBuilder builder)
@@ -187,8 +188,9 @@ namespace Vuba.WebAPI
             {
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    //Defino minha cháve de criptografia
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret)),
+                    //Defino minha chï¿½ve de criptografia
+                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JwtSecret"))),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JwtSecret").Value)),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = false,

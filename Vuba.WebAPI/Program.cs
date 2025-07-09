@@ -106,8 +106,26 @@ namespace Vuba.WebAPI
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 context.Response.Headers.Add("X-Frame-Options", "DENY");
-                context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+
+                if (app.Environment.IsProduction())
+                {
+                    context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+                }
+
+                var allowedOrigins = new[] { "http://192.168.0.75:3000", "https://localhost:3000", "https://vuba.netlify.app/" };
+                var origin = context.Request.Headers["Origin"].ToString();
+
+                if (allowedOrigins.Contains(origin))
+                {
+                    context.Response.Headers.Add("Access-Control-Allow-Origin", origin);
+                }
+                // Substitua pelo seu domínio de frontend
+                context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+
                 await next();
+
+                await next();
+
             });
         }
 
